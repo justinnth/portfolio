@@ -1,0 +1,27 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1685050592938,
+      "tag": "0000_lush_wong",
+      "breakpoints": false
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1685094561134,
+      "tag": "0001_burly_nightmare",
+      "breakpoints": false
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1685096788040,
+      "tag": "0002_melted_nico_minoru",
+      "breakpoints": false
+    }
+  ]
+}
