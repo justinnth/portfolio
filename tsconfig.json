@@ -23,7 +23,10 @@
     "paths": {
       "@utils/*": ["./src/utils/*"],
       "@components/*": ["./src/components/*"],
-      "@db/*": ["./src/db/*"]
+      "@styles/*": ["./src/styles/*"],
+      "@app/*": ["./src/app/*"],
+      "@db/*": ["./src/db/*"],
+      "@dictionaries/*": ["./src/dictionaries/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

@@ -2,14 +2,18 @@ import { UserButton, currentUser } from "@clerk/nextjs";
 import { eq } from "drizzle-orm";
 import Link from "next/link";
 
+import { ToggleDarkMode } from "@components/atoms/ToggleDarkMode";
+import { SelectPortfolio } from "@components/molecules/SelectPortfolio";
 import { db } from "@db/db";
 import { portfolios } from "@db/schema";
 
 export const Header = async () => {
   const user = await currentUser();
 
-  const dbPortfolios = user?.id
-    ? await db.select().from(portfolios).where(eq(portfolios.userId, user.id))
+  const portfoliosArr = user?.id
+    ? await db.query.portfolios.findMany({
+        where: eq(portfolios.userId, user?.id),
+      })
     : [];
 
   return (
@@ -24,16 +28,13 @@ export const Header = async () => {
           </p>
         </div>
         <p>/</p>
-        <div>
-          {dbPortfolios.map((portfolio) => (
-            <Link href={`/portfolio/${portfolio.id}`} key={portfolio.id}>
-              {portfolio.name}
-            </Link>
-          ))}
-        </div>
+        <SelectPortfolio portfolios={portfoliosArr} />
       </div>
 
-      <UserButton afterSignOutUrl="/sign-in" />
+      <div className="flex items-center gap-2">
+        <ToggleDarkMode />
+        <UserButton afterSignOutUrl="/sign-in" />
+      </div>
     </header>
   );
 };
